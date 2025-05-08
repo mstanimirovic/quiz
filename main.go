@@ -36,7 +36,7 @@ func main() {
 	mins := secs / 60
 	secs %= 60
 
-	fmt.Printf("Rezultat: %v/%v\nVreme: %v:%v\n", correctAnswers, len(questions), mins, secs)
+	fmt.Printf("Rezultat: %v/%v\nVreme: %02d:%02d\n", correctAnswers, len(questions), mins, secs)
 }
 
 // returns the number of right answers
