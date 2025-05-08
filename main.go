@@ -10,10 +10,8 @@ import (
 )
 
 type Question struct {
-	Text    string
-	Answers []string
-
-	// index that points to a correct answer
+	Text          string
+	Answers       []string
 	CorrectAnswer string
 }
 
