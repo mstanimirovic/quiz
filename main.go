@@ -19,7 +19,7 @@ type Question struct {
 
 func main() {
 	if len(os.Args) < 2 {
-		fmt.Println("usage: guiz <questions path>")
+		fmt.Println("koriscenje: go run main.go <putanja fajla>\n\tili ./quiz <putanja fajla>")
 		os.Exit(1)
 	}
 
@@ -28,8 +28,6 @@ func main() {
 	rand.Shuffle(len(questions), func(i, j int) {
 		questions[i], questions[j] = questions[j], questions[i]
 	})
-
-	// fmt.Println(questions)
 
 	startTime := time.Now()
 	correctAnswers := AskTheQuestions(questions)
