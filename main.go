@@ -27,8 +27,13 @@ func main() {
 		questions[i], questions[j] = questions[j], questions[i]
 	})
 
+	var limitQuestions int
+
+	fmt.Printf("Broj pitanja: ")
+	fmt.Scan(&limitQuestions)
+
 	startTime := time.Now()
-	correctAnswers := AskTheQuestions(questions)
+	correctAnswers := AskTheQuestions(questions, limitQuestions)
 
 	endTime := time.Now()
 	timeTaken := endTime.Sub(startTime)
@@ -36,15 +41,19 @@ func main() {
 	mins := secs / 60
 	secs %= 60
 
-	fmt.Printf("Rezultat: %v/%v\nVreme: %02d:%02d\n", correctAnswers, len(questions), mins, secs)
+	fmt.Printf("Rezultat: %v/%v\nVreme: %02d:%02d\n", correctAnswers, limitQuestions, mins, secs)
 }
 
 // returns the number of right answers
-func AskTheQuestions(questions []Question) uint {
+func AskTheQuestions(questions []Question, limit int) uint {
 	var input string
 	var answer string
 	var correctCount uint
+
 	for idx, question := range questions {
+		if idx == limit {
+			break
+		}
 		fmt.Printf("%v. %v\n\n", idx+1, question.Text)
 
 		rand.Shuffle(len(question.Answers), func(i, j int) {
