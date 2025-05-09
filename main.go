@@ -27,13 +27,20 @@ func main() {
 		questions[i], questions[j] = questions[j], questions[i]
 	})
 
-	var limitQuestions int
+	var input string
+	var limit int
 
-	fmt.Printf("Broj pitanja: ")
-	fmt.Scan(&limitQuestions)
+	fmt.Printf("BROJ PITANJA [ %d - %d ]: ", 1, len(questions))
+	fmt.Scanln(&input)
+
+	if input == "" {
+		limit = len(questions)
+	} else {
+		limit = int(input[0] - '0')
+	}
 
 	startTime := time.Now()
-	correctAnswers := AskTheQuestions(questions, limitQuestions)
+	correctAnswers := AskTheQuestions(questions, limit)
 
 	endTime := time.Now()
 	timeTaken := endTime.Sub(startTime)
@@ -41,7 +48,7 @@ func main() {
 	mins := secs / 60
 	secs %= 60
 
-	fmt.Printf("Rezultat: %v/%v\nVreme: %02d:%02d\n", correctAnswers, limitQuestions, mins, secs)
+	fmt.Printf("Rezultat: %v/%v\nVreme: %02d:%02d\n", correctAnswers, limit, mins, secs)
 }
 
 // returns the number of right answers
